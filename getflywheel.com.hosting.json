@@ -1,0 +1,36 @@
+{
+  "providerId": "getflywheel.com",
+  "providerName": "Flywheel",
+  "serviceId": "hosting",
+  "serviceName": "Managed WordPress Hosting",
+  "version": 1,
+  "logoUrl": "https://www.domainconnect.org/wp-content/uploads/2021/06/flywheel-logo.png",
+  "description": "Configure a domain to work with Flywheel",
+  "variableDescription": "ip is the IP address of the server, verification is the domain ownership verification code",
+  "syncBlock": false,
+  "syncRedirectDomain": "getflywheel.com,staging.getflywheel.com,flywheel.localhost",
+  "records": [
+    {
+      "groupId": "base",
+      "type": "A",
+      "host": "@",
+      "pointsTo": "%ip%",
+      "ttl": 3600
+    },
+    {
+      "groupId": "www",
+      "type": "CNAME",
+      "host": "www",
+      "pointsTo": "@",
+      "ttl": 3600
+    },
+    {
+      "groupId": "verify",
+      "type": "TXT",
+      "host": "flywheel-domain-verification",
+      "data": "%verification%",
+      "ttl": 3600,
+      "txtConflictMatchingMode": "All"
+    }
+  ]
+}
